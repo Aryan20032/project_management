@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
   baseQuery: { baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL },
