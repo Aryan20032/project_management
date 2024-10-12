@@ -10,14 +10,7 @@ const Navbar = () => {
   );
 
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-  console.log("isDarkMode", isDarkMode);
-  // useEffect(() => {
-  //   if (isDarkMode) {
-  //     document.documentElement.classList.add("dark");
-  //   } else {
-  //     document.documentElement.classList.remove("dark");
-  //   }
-  // }, [isDarkMode]);
+
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black dark:px-4 dark:py-3">
       {/* searchbar */}
