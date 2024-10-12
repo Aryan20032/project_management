@@ -15,7 +15,6 @@ const Sidebar = () => {
   const isSidebarCollapsed = useAppDispatch(
     (state) => state.global.isSidebarCollapsed,
   );
-  console.log("isSidebarCollapsed", isSidebarCollapsed);
 
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl transition-all duration-300 h-fuull z-40 dark:bg-black overflow-y-auto bg-white ${isSidebarCollapsed ? "w-0 hidden" : "w-64"}`;
 
