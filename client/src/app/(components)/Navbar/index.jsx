@@ -10,18 +10,18 @@ const Navbar = () => {
   );
 
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
-
+  console.log("isSidebarCollapsed", isSidebarCollapsed);
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black dark:px-4 dark:py-3">
       {/* searchbar */}
       <div className="flex items-center gap-8">
-        {!isSidebarCollapsed ? null : (
-          <button
-            onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
-          >
-            <Menu className="h-8 w-8 dark:text-white" />
-          </button>
-        )}
+        <button
+          onClick={() => dispatch(setIsSidebarCollapsed(!isSidebarCollapsed))}
+        >
+          {/* <Menu className="h-8 w-8 dark:text-white" /> */}
+          hello
+        </button>
+
         <div className="2-[200px] relative flex h-min">
           <Search className="absolute-left-[4px] top-1/2 mr-2 h-5 w-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
           <input
