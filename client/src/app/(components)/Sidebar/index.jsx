@@ -1,18 +1,36 @@
 "use client";
 
-import { useAppDispatch } from "@/app/redux";
+import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
-import { Home, Icon, LockIcon, X } from "lucide-react";
+import {
+  AlertCircle,
+  AlertOctagon,
+  AlertTriangle,
+  Briefcase,
+  ChevronDown,
+  ChevronsDown,
+  ChevronUp,
+  Home,
+  Icon,
+  Layers3,
+  LockIcon,
+  Search,
+  Settings,
+  ShieldAlert,
+  User,
+  Users,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 const Sidebar = () => {
-  const [setshowProjects, setSetshowProjects] = useState(true);
-  const [setshowPriority, setSetshowPriority] = useState(true);
+  const [showProjects, setShowProjects] = useState(true);
+  const [showPriority, setShowPriority] = useState(true);
   const dispatch = useAppDispatch();
-  const isSidebarCollapsed = useAppDispatch(
+  const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
 
@@ -30,7 +48,7 @@ const Sidebar = () => {
             <button
               className="py-3"
               onClick={() => {
-                dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));
+                dispatch(setIsSidebarCollapsed(!isSidebarCollapsed)); // Toggle sidebar collapsed state
               }}
             >
               <X className="h-6 w-6 text-gray-800 hover:text-gray-500 dark:text-white" />
@@ -52,7 +70,67 @@ const Sidebar = () => {
         </div>
         <nav className="z-10 w-full">
           <SidebarLink icon={Home} label="Home" href="/" />
+          <SidebarLink icon={Briefcase} label="Timeline" href="/timeline" />
+          <SidebarLink icon={Search} label="Search" href="/search" />
+          <SidebarLink icon={Settings} label="Settings" href="/settings" />
+          <SidebarLink icon={User} label="Users" href="/users" />
+          <SidebarLink icon={Users} label="Teams" href="/teams" />
         </nav>
+        <button
+          onClick={() => {
+            setShowProjects((prev) => !prev);
+          }}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
+          <span className="">Projects</span>
+          {showProjects ? (
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
+          )}
+        </button>
+        {/* PROJECT LIST */}
+
+        {/* PRIORITIES LIST */}
+        <button
+          onClick={() => {
+            setShowPriority((prev) => !prev);
+          }}
+          className="flex w-full items-center justify-between px-8 py-3 text-gray-500"
+        >
+          <span className="">Priority</span>
+          {showPriority ? (
+            <ChevronUp className="h-5 w-5" />
+          ) : (
+            <ChevronDown className="h-5 w-5" />
+          )}
+        </button>
+        {showPriority && (
+          <>
+            <SidebarLink
+              icon={AlertCircle}
+              label="Urgent"
+              href="/priority/urgent"
+            />
+            <SidebarLink
+              icon={ShieldAlert}
+              label="High"
+              href="/priority/high"
+            />
+
+            <SidebarLink
+              icon={AlertTriangle}
+              label="Medium"
+              href="/priority/medium"
+            />
+            <SidebarLink icon={AlertOctagon} label="Low" href="/priority/low" />
+            <SidebarLink
+              icon={Layers3}
+              label="Backlog"
+              href="/priority/backlog"
+            />
+          </>
+        )}
       </div>
     </div>
   );
@@ -62,17 +140,11 @@ const SidebarLink = ({ href, icon: Icon, label, isCollapsed }) => {
   const pathname = usePathname();
   const isActive =
     pathname === href || (pathname === "/" && href === "/dashboard");
-  const screenWidth = window.innerWidth;
-
-  const dispatch = useAppDispatch();
-  const isSidebarCollapsed = useAppDispatch(
-    (state) => state.global.isSidebarCollapsed,
-  );
 
   return (
     <Link href={href} className="w-full">
       <div
-        className={`relative flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
+        className={`relative mb-2 flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
           isActive ? "bg-gray-100 text-white dark:bg-gray-600" : ""
         } `}
       >
