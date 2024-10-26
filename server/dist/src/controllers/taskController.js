@@ -61,7 +61,7 @@ const createTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.createTask = createTask;
 const updateTaskStatus = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { taskId } = req.query;
+    const { taskId } = req.params;
     const { status } = req.body;
     try {
         const updatedTask = yield prisma.task.update({

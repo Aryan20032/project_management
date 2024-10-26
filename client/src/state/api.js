@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const api = createApi({
-  baseQuery: { baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL },
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
   reducerPath: "api",
   tagTypes: ["Projects", "Tasks"],
   endpoints: (build) => ({
@@ -18,7 +18,7 @@ export const api = createApi({
       invalidatesTags: ["Projects"],
     }),
     getTasks: build.query({
-      query: (projectId) => "tasks?projectid=${projectId}",
+      query: ({ projectId }) => `tasks?projectId=${projectId}`,
       providesTags: (result) =>
         result
           ? result.map(({ id }) => ({ type: "Tasks", id }))
@@ -34,9 +34,9 @@ export const api = createApi({
       invalidatesTags: ["Tasks"],
     }),
 
-    updateTask: build.mutation({
+    updateTaskStatus: build.mutation({
       query: ({ taskId, status }) => ({
-        url: "tasks",
+        url: `tasks/${taskId}/status?taskId=${taskId}`,
         method: "PATCH",
         body: { status },
       }),
@@ -48,8 +48,9 @@ export const api = createApi({
 });
 
 export const {
-  useGetProjectQuery,
+  useGetProjectsQuery,
   useCreateProjectMutation,
-  useGetTaskQuery,
+  useGetTasksQuery,
   useCreateTaskMutation,
+  useUpdateTaskStatusMutation,
 } = api;
