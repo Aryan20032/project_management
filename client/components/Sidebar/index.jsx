@@ -157,7 +157,7 @@ const SidebarLink = ({ href, icon: Icon, label, isCollapsed }) => {
   return (
     <Link href={href} className="w-full">
       <div
-        className={`relative mb-2 flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
+        className={`relative my-4 flex cursor-pointer items-center gap-3 transition-colors hover:bg-gray-100 dark:bg-black dark:hover:bg-gray-700 ${
           isActive ? "bg-gray-100 text-white dark:bg-gray-600" : ""
         } `}
       >

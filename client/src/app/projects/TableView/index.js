@@ -57,13 +57,13 @@ const Table = ({ id, setIsModalNewTaskOpen }) => {
     {
       field: "author",
       headerName: "Author",
-      width: 150,
+      width: 130,
       renderCell: (params) => params.value?.author || "Unknown",
     },
     {
       field: "assignee",
       headerName: "Assignee",
-      width: 150,
+      width: 130,
       renderCell: (params) => params.value?.assignee || "Unassigned",
     },
   ];
