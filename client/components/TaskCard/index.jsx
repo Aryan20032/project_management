@@ -1,5 +1,5 @@
 import React from "react";
-import { Task } from "@/state/api";
+import { Task } from "../../src/state/api";
 import { format } from "date-fns";
 import Image from "next/image";
 

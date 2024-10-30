@@ -1,5 +1,5 @@
 "use client";
-import { useSearchQuery } from "@/state/api";
+import { useSearchQuery } from "../../state/api";
 import React, { useEffect, useState } from "react";
 import { debounce } from "lodash";
 import Header from "../../../components/Header";

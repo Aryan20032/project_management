@@ -1,9 +1,9 @@
-import { useAppSelector } from "@/app/redux";
-import { useGetTasksQuery } from "@/state/api";
+import { useAppSelector } from "../../redux";
+import { useGetTasksQuery } from "../../../state/api";
 import React from "react";
 import Header from "../../../../components/Header";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import { dataGridClassNames, dataGridSxStyles } from "@/lib/utils";
+import { dataGridClassNames, dataGridSxStyles } from "../../../lib/utils";
 
 const Table = ({ id, setIsModalNewTaskOpen }) => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);

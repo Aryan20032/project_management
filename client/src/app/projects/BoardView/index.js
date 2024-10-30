@@ -1,4 +1,7 @@
-import { useGetTasksQuery, useUpdateTaskStatusMutation } from "@/state/api";
+import {
+  useGetTasksQuery,
+  useUpdateTaskStatusMutation,
+} from "../../../state/api";
 import { format } from "date-fns";
 import { EllipsisVertical, MessageSquareMore, Plus } from "lucide-react";
 import Image from "next/image";

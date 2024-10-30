@@ -1,8 +1,8 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/app/redux";
-import { setIsSidebarCollapsed } from "@/state";
-import { useGetProjectsQuery } from "@/state/api";
+import { useAppDispatch, useAppSelector } from "../../src/app/redux";
+import { setIsSidebarCollapsed } from "../../src/state";
+import { useGetProjectsQuery } from "../../src/state/api";
 import {
   AlertCircle,
   AlertOctagon,
