@@ -5,3 +5,5 @@ server/dist/
 client/.env*.local
 server/.env
 client/.next/
+client/*.tsbuildinfo
+client/next-env.d.ts
