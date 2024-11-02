@@ -3,8 +3,7 @@ module.exports = {
     {
       name: "project-management",
       script: "npm",
-      args: "run dev", // Command to run
-      interpreter: "none", // Ensures PM2 doesn't look for a Node script
+      args: "run dev",
       env: {
         NODE_ENV: "development",
       },
